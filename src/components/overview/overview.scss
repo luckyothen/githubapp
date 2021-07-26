@@ -1,0 +1,83 @@
+@import "../../assets/scss/index.scss";
+
+.overview {
+  color: $lighter_gray;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__text {
+    font-size: 0.9rem;
+  }
+
+  &__item {
+    position: relative;
+    z-index: 2;
+    padding: 1rem;
+  }
+
+  &__item:first-child {
+    border-bottom: $orange 2px solid;
+  }
+
+  &__counter {
+    font-size: 0.6rem;
+    background-color: $bluegreen;
+    width: 21px;
+    height: 15px;
+    color: $white;
+    position: absolute;
+    top: 5px;
+    right: -3px;
+    z-index: 3;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
+  }
+
+  &__text:not(:first-child) {
+    transition: 0.3s ease-in-out all;
+    &:hover {
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .overview {
+    &__links {
+      display: block;
+      overflow: hidden;
+    }
+
+    &__counter {
+      left: 65px;
+      top: 9px;
+    }
+
+    &__item {
+      padding-left: 0;
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+    }
+
+    &__item:first-child {
+      padding-top: 0.5rem;
+    }
+
+    &__item:nth-child(2) &__counter {
+      left: 45px;
+    }
+
+    &__item:nth-child(3) &__counter {
+      left: 35px;
+    }
+  }
+}

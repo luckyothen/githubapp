@@ -1,0 +1,185 @@
+@import "../../assets/scss/index.scss";
+
+.nav {
+  background-color: $dark;
+  color: $light_gray;
+  padding: 0.5rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+  z-index: 5;
+  &__menu {
+    display: none;
+  }
+
+  &__wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &__search-wrapper {
+    display: flex;
+  }
+
+  &__search-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__search {
+    display: block;
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+    border-radius: 5px;
+    background-color: $gray;
+    outline: none;
+    border: 1px solid $lighter_gray;
+    color: $lighter_gray;
+  }
+
+  &__links {
+    display: flex;
+    gap: 1.7rem;
+  }
+
+  &__item {
+    font-size: 0.9rem !important;
+    transition: 0.3s ease-in-out all;
+
+    &:hover {
+      cursor: pointer;
+      color: $white;
+    }
+  }
+
+  &__icon-git {
+    color: $white;
+    font-size: 2rem;
+    transition: all ease-in 0.3s;
+    margin-right: 0.5rem;
+    &:hover {
+      color: $light_gray;
+      cursor: pointer;
+    }
+  }
+
+  &__notification-profile {
+    justify-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* This will set the image size as cover */
+    object-fit: cover;
+    border: 2px solid$white;
+  }
+
+  &__icon-notification {
+    font-size: 1.3rem;
+    margin-right: 0.8rem;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      color: $white;
+    }
+  }
+
+  &__icon-caret {
+    font-size: 1.2rem;
+    transition: all ease-in-out 0.3s;
+    margin-left: 0.2rem;
+
+    &:hover {
+      cursor: pointer;
+      color: $white;
+    }
+  }
+
+  &__icon-close {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .nav {
+    &__search-links {
+      display: none;
+    }
+
+    &__menu {
+      width: 35px;
+      padding: 0.3rem;
+      display: block;
+      border: 2px solid $light_gray;
+      transition: all ease-in-out 0.3s;
+      z-index: 4;
+      &:hover {
+        border: 2px solid $white;
+        cursor: pointer;
+      }
+    }
+
+    &__menu:hover &__bar {
+      background-color: $white;
+    }
+
+    &__bar {
+      height: 2px;
+      background-color: $light_gray;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    &__bar:last-of-type {
+      margin-bottom: 0px;
+    }
+
+    &__search-links {
+      position: absolute;
+      top: 0 !important;
+      left: 0;
+      bottom: 0 !important;
+      right: 0;
+      height: 100;
+      width: 100%;
+      min-height: 100%;
+      margin: 0 !important;
+      transition: ease-in-out all 200ms;
+      background-color: $dark;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      z-index: 60;
+    }
+
+    &__search-wrapper {
+      width: 90%;
+
+      margin-top: 60%;
+      position: sticky;
+    }
+
+    &__icon-close {
+      position: absolute;
+      top: 50px;
+      left: 30px;
+      display: block;
+      color: $lighter_gray;
+      font-size: 1.4rem;
+      font-weight: bolder;
+
+      &:hover {
+        color: $white;
+        cursor: pointer;
+      }
+    }
+  }
+}
