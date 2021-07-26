@@ -24,3 +24,17 @@ export const getUser = (username) => {
     }
   };
 };
+
+
+export const getRepositories = (username) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://api.github.com/users/${username}/repos`
+      );
+      dispatch(githubActions.fillRepositories(response.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};

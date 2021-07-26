@@ -6,7 +6,6 @@ import defaultImage from "../../assets/images/default.png";
 export default function Header() {
   let user = useSelector((state) => state.gitHubReducer.user);
 
-
   return (
     <header className="header container">
       <div className="header__wrapper">

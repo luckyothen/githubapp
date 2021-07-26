@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../redux/actions/github-action";
+import { getUser, getRepositories } from "../../redux/actions/github-action";
 import defaultImage from "../../assets/images/default.png";
 import "./nav.scss";
 
@@ -18,6 +18,7 @@ export default function Nav() {
       // axios.get(url).then((data) => console.log(data));
 
       dispatch(getUser(e.target.value));
+      dispatch(getRepositories(e.target.value));
     }
   };
 
