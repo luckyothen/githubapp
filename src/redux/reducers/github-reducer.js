@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const githubSlice = createSlice({
   name: "gitHub",
-  initialState: { users: [], user: null, repositories: [], starredRepos: [] },
+  initialState: { users: [], user: null, repositories: [], starredRepos: [], followers: [], following: [] },
   reducers: {
     fillUsers(state, action) {
       state.users = action.payload;
@@ -15,6 +15,12 @@ const githubSlice = createSlice({
     },
     filLStarredRepos(state, action) {
       state.starredRepos = action.payload;
+    },
+    fillFollowers(state, action) {
+      state.followers = action.payload;
+    },
+    fillFollowing(state, action) {
+      state.following = action.payload;
     },
   },
 });

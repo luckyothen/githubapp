@@ -30,13 +30,19 @@ export default function overview() {
                     <span className="overview__counter">
                         65
                     </span>
-                    <p className="overview__text">Followers</p>
+                    <NavLink to='/followers' activeClassName="overview__text" >
+                        <p className="overview__text">Followers</p>
+                    </NavLink>
+
                 </li>
                 <li className="overview__item">
                     <span className="overview__counter">
                         78
                     </span>
-                    <p className="overview__text">Following</p>
+                    <NavLink to='/following' activeClassName="overview__text" >
+                        <p className="overview__text">Following</p>
+                    </NavLink>
+
                 </li>
             </ul>
         </section>
