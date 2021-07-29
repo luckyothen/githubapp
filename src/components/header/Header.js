@@ -23,7 +23,7 @@ export default function Header() {
               {!user || !user.bio ? 'Vivamizzle gangster doggy doggy nisi the bizzle pretizzle. Vivamus things amet lacizzle. Bling bling eu its fo rizzle eget lacizzle auctizzle shiznit. Praesent suscipit viverra ipsum. ' : user.bio}
             </p>
           </div>
-          <i className="header__icon-edit fas fa-pencil-alt"></i>
+
         </article>
         <article className="header__contacts-wrapper header__profile">
           <ul className="header__contacts-links">

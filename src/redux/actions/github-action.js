@@ -32,6 +32,7 @@ export const getRepositories = (username) => {
       const response = await axios.get(
         `https://api.github.com/users/${username}/repos`
       );
+      console.log(response.data);
       dispatch(githubActions.fillRepositories(response.data));
     } catch (err) {
       console.log(err);
@@ -76,7 +77,7 @@ export const getFollowing = (username) => {
         `https://api.github.com/users/${username}/following`
       );
       dispatch(githubActions.fillFollowing(response.data));
-      console.log(response.data);
+
     } catch (err) {
       console.log(err);
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./repository.scss";
 
 export default function Repository(props) {
@@ -10,7 +11,9 @@ export default function Repository(props) {
         {props.repos &&
           props.repos.map((repository) => (
             <div className="repository__card" key={repository.id}>
-              <div className="repository__card-title">{repository.name}</div>
+              <Link to={{ pathname: repository.html_url }} target="_blank" >
+                <div className="repository__card-title">{repository.name}</div>
+              </Link>
               <p className="repository__card-text">{repository.description}</p>
               <ul className="repository__misc">
                 <li className="repository__misc-item">
