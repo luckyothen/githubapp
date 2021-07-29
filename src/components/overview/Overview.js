@@ -1,5 +1,6 @@
 import React from 'react';
 import './overview.scss';
+import { NavLink } from 'react-router-dom';
 
 export default function overview() {
     return (
@@ -12,13 +13,18 @@ export default function overview() {
                     <span className="overview__counter">
                         14
                     </span>
-                    <p className="overview__text">Repos</p>
+                    <NavLink to='/' activeClassName="overview__text">
+                        <p className="overview__text">Repos</p>
+                    </NavLink>
+
                 </li>
                 <li className="overview__item">
                     <span className="overview__counter">
                         35
                     </span>
-                    <p className="overview__text">Stars</p>
+                    <NavLink to='/starred-repo' activeClassName="overview__text" >
+                        <p className="overview__text">Stars</p>
+                    </NavLink>
                 </li>
                 <li className="overview__item">
                     <span className="overview__counter">

@@ -1,19 +1,14 @@
 import React from "react";
 import "./repository.scss";
-import { useSelector } from "react-redux";
 
-export default function Repository() {
-  console.log("REPOSITORIES");
-  let repositories = useSelector((state) => state.gitHubReducer.repositories);
-
-  console.log(repositories);
+export default function Repository(props) {
 
   return (
     <section className="repository container">
-      <h2 className="repository__section-title">Popular</h2>
+      <h2 className="repository__section-title">{props.title}</h2>
       <div className="repository__wrapper">
-        {repositories &&
-          repositories.map((repository) => (
+        {props.repos &&
+          props.repos.map((repository) => (
             <div className="repository__card" key={repository.id}>
               <div className="repository__card-title">{repository.name}</div>
               <p className="repository__card-text">{repository.description}</p>
@@ -49,7 +44,7 @@ export default function Repository() {
                     aria-hidden="true"
                   ></i>
                   <p className="repository__misc-text">
-                    {console.log(repository.license)}
+
                     {repository.license && repository.license["name"]
                       ? repository.license["name"]
                       : "NA"}

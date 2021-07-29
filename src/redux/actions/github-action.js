@@ -38,3 +38,18 @@ export const getRepositories = (username) => {
     }
   };
 };
+
+export const getStarred = (username) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://api.github.com/users/${username}/starred`
+      );
+      dispatch(githubActions.filLStarredRepos(response.data));
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
