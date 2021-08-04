@@ -16,11 +16,7 @@ export const getUser = (username) => {
     try {
       const response = await axios.get(
         "https://api.github.com/users/" + username,
-        {
-          headers: {
-            "User-Agent": "request",
-          },
-        }
+
       );
       dispatch(githubActions.fillUser(response.data));
     } catch (err) {
@@ -34,11 +30,7 @@ export const getRepositories = (username) => {
     try {
       const response = await axios.get(
         `https://api.github.com/users/${username}/repos`,
-        {
-          headers: {
-            "User-Agent": "request",
-          },
-        }
+
       );
       console.log(response.data);
       dispatch(githubActions.fillRepositories(response.data));
@@ -53,11 +45,7 @@ export const getStarred = (username) => {
     try {
       const response = await axios.get(
         `https://api.github.com/users/${username}/starred`,
-        {
-          headers: {
-            "User-Agent": "request",
-          },
-        }
+
       );
       dispatch(githubActions.filLStarredRepos(response.data));
     } catch (err) {
@@ -71,11 +59,7 @@ export const getFollowers = (username) => {
     try {
       const response = await axios.get(
         `https://api.github.com/users/${username}/followers`,
-        {
-          headers: {
-            "User-Agent": "request",
-          },
-        }
+
       );
       dispatch(githubActions.fillFollowers(response.data));
       console.log(response.data);
@@ -90,11 +74,7 @@ export const getFollowing = (username) => {
     try {
       const response = await axios.get(
         `https://api.github.com/users/${username}/following`,
-        {
-          headers: {
-            "User-Agent": "request",
-          },
-        }
+
       );
       dispatch(githubActions.fillFollowing(response.data));
     } catch (err) {

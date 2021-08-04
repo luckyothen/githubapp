@@ -7,6 +7,9 @@ let uiSlice = createSlice({
     closeShowMenu(state, action) {
       state.isShowMenu = !state.isShowMenu;
     },
+    forceCloseShowMenu(state, action) {
+      state.isShowMenu = false;
+    }
   },
 });
 

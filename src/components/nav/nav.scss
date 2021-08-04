@@ -2,18 +2,18 @@
 
 .nav {
   background-color: $dark;
-  color: $light_gray;
-  padding: 0.5rem;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+  color           : $light_gray;
+  padding         : 0.5rem;
+  box-shadow      : 0 -2px 10px rgba(0, 0, 0, 1);
 
   &__menu {
     display: none;
   }
 
   &__wrapper {
-    display: grid;
-    justify-content: center;
-    align-items: center;
+    display              : grid;
+    justify-content      : center;
+    align-items          : center;
     grid-template-columns: 2fr 1fr;
   }
 
@@ -22,85 +22,86 @@
   }
 
   &__search-links {
-    display: flex;
+    display        : flex;
     justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
+    align-items    : center;
+    gap            : 1rem;
   }
 
   &__search {
-    display: block;
-    padding: 0.3rem 0.5rem;
-    width: 100%;
-    border-radius: 5px;
+    display         : block;
+    padding         : 0.3rem 0.5rem;
+    width           : 100%;
+    border-radius   : 5px;
     background-color: $gray;
-    outline: none;
-    border: 1px solid $lighter_gray;
-    color: $lighter_gray;
+    outline         : none;
+    border          : 1px solid $lighter_gray;
+    color           : $lighter_gray;
   }
 
   &__links {
     display: flex;
-    gap: 1.7rem;
+    gap    : 1.7rem;
   }
 
   &__item {
-    font-size: 0.9rem !important;
+    font-size : 0.9rem !important;
     transition: 0.3s ease-in-out all;
+    color     : $lighter_gray;
 
     &:hover {
       cursor: pointer;
-      color: $white;
+      color : $white;
     }
   }
 
   &__icon-git {
-    color: $white;
-    font-size: 2rem;
-    transition: all ease-in 0.3s;
+    color       : $white;
+    font-size   : 2rem;
+    transition  : all ease-in 0.3s;
     margin-right: 0.5rem;
 
     &:hover {
-      color: $light_gray;
+      color : $light_gray;
       cursor: pointer;
     }
   }
 
   &__notification-profile {
-    justify-self: flex-end;
-    display: flex;
+    justify-self   : flex-end;
+    display        : flex;
     justify-content: center;
-    align-items: center;
+    align-items    : center;
   }
 
   &__profile-pic {
-    width: 30px;
-    height: 30px;
+    width        : 30px;
+    height       : 30px;
     border-radius: 50%;
     /* This will set the image size as cover */
-    object-fit: cover;
-    border: 2px solid$white;
+    object-fit   : cover;
+    border       : 2px solid$white;
   }
 
   &__icon-notification {
-    font-size: 1.3rem;
+    font-size   : 1.3rem;
     margin-right: 0.8rem;
-    transition: all ease-in-out 0.3s;
+    transition  : all ease-in-out 0.3s;
 
     &:hover {
       cursor: pointer;
-      color: $white;
+      color : $white;
     }
   }
 
   &__icon-caret {
-    font-size: 1.2rem;
-    transition: all ease-in-out 0.3s;
+    font-size  : 1.2rem;
+    transition : all ease-in-out 0.3s;
     margin-left: 0.2rem;
 
     &:hover {
       cursor: pointer;
-      color: $white;
+      color : $white;
     }
   }
 
@@ -116,12 +117,12 @@
     }
 
     &__menu {
-      width: 35px;
-      padding: 0.3rem;
-      display: block;
-      border: 2px solid $light_gray;
+      width     : 35px;
+      padding   : 0.3rem;
+      display   : block;
+      border    : 2px solid $light_gray;
       transition: all ease-in-out 0.3s;
-      z-index: 4;
+      z-index   : 4;
 
       &:hover {
         border: 2px solid $white;
@@ -134,10 +135,10 @@
     }
 
     &__bar {
-      height: 2px;
+      height          : 2px;
       background-color: $light_gray;
-      display: block;
-      margin-bottom: 5px;
+      display         : block;
+      margin-bottom   : 5px;
     }
 
     &__bar:last-of-type {
@@ -145,41 +146,45 @@
     }
 
     &__search-links {
-      position: absolute;
-      top: 0 !important;
-      left: 0;
-      bottom: 0 !important;
-      right: 0;
-      height: 100vh;
-      width: 100%;
-      min-height: 100vh;
-      margin: 0 !important;
-      transition: ease-in-out all 200ms;
-      background-color: $dark;
-      display: none;
-      align-items: center;
-      flex-direction: column;
-      z-index: 9999;
+      position        : absolute;
+      top             : 0 !important;
+      left            : 0;
+      bottom          : 0 !important;
+      right           : 0;
+      width           : 100%;
+      min-height      : 100%;
+      transition      : ease-in-out all 200ms;
+      background-color: deeppink;
+      display         : flex;
+      justify-content : flex-start;
+      align-items     : center;
+      flex-direction  : column;
+      z-index         : 9999;
+
+    }
+
+    &__search-links &__search-links--show {
+      top: -3000px !important;
     }
 
     &__search-wrapper {
       width: 90%;
 
       margin-top: 60%;
-      position: sticky;
+      position  : sticky;
     }
 
     &__icon-close {
-      position: absolute;
-      top: 50px;
-      left: 30px;
-      display: block;
-      color: $lighter_gray;
-      font-size: 1.4rem;
+      position   : absolute;
+      top        : 50px;
+      left       : 30px;
+      display    : block;
+      color      : $lighter_gray;
+      font-size  : 1.4rem;
       font-weight: bolder;
 
       &:hover {
-        color: $white;
+        color : $white;
         cursor: pointer;
       }
     }

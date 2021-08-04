@@ -39,7 +39,7 @@ export default function Follow(props) {
   if (props.items && props.items.length > 0) {
     wrapper = "follow__wrapper";
     items = props.items.map((item) => (
-      <div className="follow__card">
+      <div className="follow__card" key={item.id}>
         <img
           srcSet={item.avatar_url}
           alt="Profile Pic"

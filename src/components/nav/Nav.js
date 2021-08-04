@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import {
   getUser,
   getRepositories,
@@ -28,6 +29,14 @@ export default function Nav() {
 
   const menuHandler = () => {
     dispatch(uiActions.closeShowMenu());
+    console.log(isShowMenu);
+  };
+
+  const menuForceCloseHandler = () => {
+    console.log('click close')
+    console.log(isShowMenu);
+    dispatch(uiActions.forceCloseShowMenu());
+
   };
 
   return (
@@ -45,9 +54,11 @@ export default function Nav() {
               : "nav__search-links"
           }
         >
-          <i className="fas fa-times nav__icon-close"></i>
+          <i className="fas fa-times nav__icon-close" onClick={menuForceCloseHandler}></i>
           <div className="nav__search-wrapper">
-            <i className="fab fa-github nav__icon-git"></i>
+            <Link className="nav__item" to={{ pathname: "https://github.com/" }} target="_blank">
+              <i className="fab fa-github nav__icon-git"></i>
+            </Link>
             <input
               type="search"
               name="search"
@@ -59,10 +70,16 @@ export default function Nav() {
           </div>
 
           <ul className="nav__links">
-            <li className="nav__item">Pull Requests</li>
-            <li className="nav__item">Issues</li>
-            <li className="nav__item">Market Place</li>
-            <li className="nav__item">Explore</li>
+            <li>
+              <Link className="nav__item" to={{ pathname: "https://github.com/marketplace" }} target="_blank">
+                Market Place
+              </Link>
+            </li>
+            <li>
+              <Link className="nav__item" to={{ pathname: "https://github.com/explore" }} target="_blank">
+                Explore
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="nav__notification-profile">

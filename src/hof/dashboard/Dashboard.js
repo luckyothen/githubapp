@@ -15,14 +15,11 @@ function Dashboard() {
 
   return (
     <div className={cssClass.dashboard}>
-      <Nav />
-      <Header />
-
-
       <BrowserRouter>
+        <Nav />
+        <Header />
         <Overview />
         <Switch>
-
           <Route exact path='/' component={UserRepo} />
           <Route exact path='/my-repo' component={UserRepo} />
           <Route exact path='/starred-repo' component={StarredRepo} />
