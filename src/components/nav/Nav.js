@@ -1,22 +1,23 @@
 import React from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, getRepositories, getStarred, getFollowers, getFollowing } from "../../redux/actions/github-action";
+import {
+  getUser,
+  getRepositories,
+  getStarred,
+  getFollowers,
+  getFollowing,
+} from "../../redux/actions/github-action";
+import { uiActions } from "../../redux/reducers/ui-reducers";
 import defaultImage from "../../assets/images/default.png";
 import "./nav.scss";
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.gitHubReducer.user);
+  const user = useSelector((state) => state.gitHubReducer.user);
+  const isShowMenu = useSelector((state) => state.uiReducer.isShowMenu);
 
   const searchHandler = (e) => {
     if (e.keyCode === 13) {
-      // let url = "https://api.github.com/users";
-      // if (e.target.value && e.target.value !== "") {
-      //   url = "https://api.github.com/users/" + e.target.value;
-      // }
-      // axios.get(url).then((data) => console.log(data));
-
       dispatch(getUser(e.target.value));
       dispatch(getRepositories(e.target.value));
       dispatch(getStarred(e.target.value));
@@ -25,15 +26,25 @@ export default function Nav() {
     }
   };
 
+  const menuHandler = () => {
+    dispatch(uiActions.closeShowMenu());
+  };
+
   return (
     <nav className="nav">
       <div className="nav__wrapper container">
-        <div className="nav__menu">
+        <div className="nav__menu" onClick={menuHandler}>
           <div className="nav__bar"></div>
           <div className="nav__bar"></div>
           <div className="nav__bar"></div>
         </div>
-        <div className="nav__search-links">
+        <div
+          className={
+            isShowMenu
+              ? "nav__search-links nav__search-links--show"
+              : "nav__search-links"
+          }
+        >
           <i className="fas fa-times nav__icon-close"></i>
           <div className="nav__search-wrapper">
             <i className="fab fa-github nav__icon-git"></i>

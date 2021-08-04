@@ -2,7 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const githubSlice = createSlice({
   name: "gitHub",
-  initialState: { users: [], user: null, repositories: [], starredRepos: [], followers: [], following: [] },
+  initialState: {
+    users: [],
+    user: null,
+    repositories: [],
+    starredRepos: [],
+    followers: [],
+    following: [],
+    loading: false,
+  },
   reducers: {
     fillUsers(state, action) {
       state.users = action.payload;
