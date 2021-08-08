@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   getUser,
   getRepositories,
   getStarred,
   getFollowers,
   getFollowing,
+  getStarredRepoCount,
 } from "../../redux/actions/github-action";
 import { uiActions } from "../../redux/reducers/ui-reducers";
 import defaultImage from "../../assets/images/default.png";
@@ -24,6 +25,8 @@ export default function Nav() {
       dispatch(getStarred(e.target.value));
       dispatch(getFollowers(e.target.value));
       dispatch(getFollowing(e.target.value));
+      dispatch(getStarredRepoCount(e.target.value));
+      dispatch(uiActions.forceCloseShowMenu());
     }
   };
 
@@ -33,10 +36,7 @@ export default function Nav() {
   };
 
   const menuForceCloseHandler = () => {
-    console.log('click close')
-    console.log(isShowMenu);
     dispatch(uiActions.forceCloseShowMenu());
-
   };
 
   return (
@@ -49,38 +49,53 @@ export default function Nav() {
         </div>
         <div
           className={
-            isShowMenu
-              ? "nav__search-links nav__search-links--show"
-              : "nav__search-links"
+            isShowMenu ? "nav__search-links--show" : "nav__search-layer"
           }
         >
-          <i className="fas fa-times nav__icon-close" onClick={menuForceCloseHandler}></i>
-          <div className="nav__search-wrapper">
-            <Link className="nav__item" to={{ pathname: "https://github.com/" }} target="_blank">
-              <i className="fab fa-github nav__icon-git"></i>
-            </Link>
-            <input
-              type="search"
-              name="search"
-              id="search"
-              className="nav__search"
-              placeholder="Search"
-              onKeyDown={(e) => searchHandler(e)}
-            />
-          </div>
+          <div className="nav__search-links">
+            <i
+              className="fas fa-times nav__icon-close"
+              onClick={menuForceCloseHandler}
+            ></i>
+            <div className="nav__search-wrapper">
+              <Link
+                className="nav__item"
+                to={{ pathname: "https://github.com/" }}
+                target="_blank"
+              >
+                <i className="fab fa-github nav__icon-git"></i>
+              </Link>
+              <input
+                type="search"
+                name="search"
+                id="search"
+                className="nav__search"
+                placeholder="Search"
+                onKeyDown={(e) => searchHandler(e)}
+              />
+            </div>
 
-          <ul className="nav__links">
-            <li>
-              <Link className="nav__item" to={{ pathname: "https://github.com/marketplace" }} target="_blank">
-                Market Place
-              </Link>
-            </li>
-            <li>
-              <Link className="nav__item" to={{ pathname: "https://github.com/explore" }} target="_blank">
-                Explore
-              </Link>
-            </li>
-          </ul>
+            <ul className="nav__links">
+              <li>
+                <Link
+                  className="nav__item"
+                  to={{ pathname: "https://github.com/marketplace" }}
+                  target="_blank"
+                >
+                  Market Place
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="nav__item"
+                  to={{ pathname: "https://github.com/explore" }}
+                  target="_blank"
+                >
+                  Explore
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="nav__notification-profile">
           <i className="fas fa-bell nav__icon-notification"></i>

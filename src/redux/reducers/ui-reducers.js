@@ -9,7 +9,7 @@ let uiSlice = createSlice({
     },
     forceCloseShowMenu(state, action) {
       state.isShowMenu = false;
-    }
+    },
   },
 });
 

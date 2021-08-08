@@ -1,32 +1,32 @@
 @import "../../assets/scss/index.scss";
 
 .overview {
-  color        : $lighter_gray;
-  margin-top   : 3rem;
+  color: $lighter_gray;
+  margin-top: 3rem;
   margin-bottom: 3rem;
-  overflow     : hidden;
+  overflow: hidden;
 
   &__links {
-    display        : flex;
-    align-items    : center;
+    display: flex;
+    align-items: center;
     justify-content: space-around;
   }
 
   &__text {
-    font-size : 0.9rem;
-    color     : $lighter_gray;
-    transition: .3s ease-in-out all;
+    font-size: 0.9rem;
+    color: $lighter_gray;
+    transition: 0.3s ease-in-out all;
 
-    &:hover {
-      color : $white;
+    &:hover:not(:first-child) {
+      color: $white;
       cursor: pointer;
     }
   }
 
   &__item {
     position: relative;
-    z-index : 2;
-    padding : 1rem;
+    z-index: 2;
+    padding: 1rem;
   }
 
   &__item:first-child {
@@ -34,25 +34,25 @@
   }
 
   &__counter {
-    font-size       : 0.6rem;
+    display: inline-block;
+    font-size: 0.6rem;
     background-color: $green;
-    width           : 21px;
-    height          : 15px;
-    color           : $white;
-    position        : absolute;
-    top             : 5px;
-    right           : -3px;
-    z-index         : 3;
-    text-align      : center;
-    vertical-align  : middle;
-    border-radius   : 5px;
+
+    color: $white;
+    position: absolute;
+    top: 3px;
+    right: -8px;
+    z-index: 3;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
   }
 
   &__text:not(:first-child) {
     transition: 0.3s ease-in-out all;
 
     &:hover {
-      color : $white;
+      color: $white;
       cursor: pointer;
     }
   }
@@ -61,31 +61,26 @@
 @media only screen and (max-width: 600px) {
   .overview {
     &__links {
-      display : block;
-      overflow: hidden;
-    }
-
-    &__counter {
-      left: 65px;
-      top : 9px;
+      display: inline-block;
     }
 
     &__item {
-      padding-left  : 0;
-      padding-top   : 0.8rem;
-      padding-bottom: 0.8rem;
+      padding-left: 0;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
     }
 
-    &__item:first-child {
-      padding-top: 0.5rem;
+    &__counter {
+      display: inline-block;
+      position: absolute;
+      z-index: 4;
+      left: 65px;
+      top: 15px;
     }
 
-    &__item:nth-child(2) &__counter {
-      left: 45px;
-    }
-
-    &__item:nth-child(3) &__counter {
-      left: 35px;
+    &__item:nth-of-type(2) &__counter {
+      position: absolute !important;
+      left: 3px !important;
     }
   }
 }

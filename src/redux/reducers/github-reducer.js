@@ -10,6 +10,7 @@ const githubSlice = createSlice({
     followers: [],
     following: [],
     loading: false,
+    starredReposCount: 0,
   },
   reducers: {
     fillUsers(state, action) {
@@ -29,6 +30,9 @@ const githubSlice = createSlice({
     },
     fillFollowing(state, action) {
       state.following = action.payload;
+    },
+    fillStarredRepoCount(state, action) {
+      state.starredReposCount = action.payload;
     },
   },
 });

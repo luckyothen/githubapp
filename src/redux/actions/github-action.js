@@ -15,8 +15,7 @@ export const getUser = (username) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        "https://api.github.com/users/" + username,
-
+        "https://api.github.com/users/" + username
       );
       dispatch(githubActions.fillUser(response.data));
     } catch (err) {
@@ -29,10 +28,9 @@ export const getRepositories = (username) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://api.github.com/users/${username}/repos`,
-
+        `https://api.github.com/users/${username}/repos`
       );
-      console.log(response.data);
+
       dispatch(githubActions.fillRepositories(response.data));
     } catch (err) {
       console.log(err);
@@ -44,8 +42,7 @@ export const getStarred = (username) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://api.github.com/users/${username}/starred`,
-
+        `https://api.github.com/users/${username}/starred`
       );
       dispatch(githubActions.filLStarredRepos(response.data));
     } catch (err) {
@@ -58,8 +55,7 @@ export const getFollowers = (username) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://api.github.com/users/${username}/followers`,
-
+        `https://api.github.com/users/${username}/followers`
       );
       dispatch(githubActions.fillFollowers(response.data));
       console.log(response.data);
@@ -73,10 +69,23 @@ export const getFollowing = (username) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://api.github.com/users/${username}/following`,
-
+        `https://api.github.com/users/${username}/following`
       );
       dispatch(githubActions.fillFollowing(response.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const getStarredRepoCount = (username) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://api.github.com/users/${username}/starred?page=1&per_page=10000`
+      );
+
+      dispatch(githubActions.fillStarredRepoCount(response.data.length));
     } catch (err) {
       console.log(err);
     }
