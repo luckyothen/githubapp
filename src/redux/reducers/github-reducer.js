@@ -34,6 +34,14 @@ const githubSlice = createSlice({
     fillStarredRepoCount(state, action) {
       state.starredReposCount = action.payload;
     },
+    clearAll(state, action) {
+      state.starredReposCount = 0;
+      state.following = [];
+      state.followers = [];
+      state.starredRepos = [];
+      state.repositories = [];
+      state.user = null;
+    },
   },
 });
 

@@ -9,8 +9,6 @@ export default function Overview() {
     (state) => state.gitHubReducer.starredReposCount
   );
 
- 
-
   return (
     <section className="overview container">
       <ul className="overview__links">
@@ -18,30 +16,30 @@ export default function Overview() {
           <p className="overview__text">Overview</p>
         </li>
         <li className="overview__item">
-          <span className="overview__counter">
-            {user ? user.public_repos : 0}
-          </span>
           <Link to="/my-repo">
             <p className="overview__text">Repos</p>
           </Link>
+          <span className="overview__counter">
+            {user ? user.public_repos : 0}
+          </span>
         </li>
         <li className="overview__item">
-          <span className="overview__counter">{starredReposCount}</span>
           <Link to="/starred-repo">
             <p className="overview__text">Stars</p>
           </Link>
+          <span className="overview__counter">{starredReposCount}</span>
         </li>
         <li className="overview__item">
-          <span className="overview__counter">{user ? user.followers : 0}</span>
           <Link to="/followers">
             <p className="overview__text">Followers</p>
           </Link>
+          <span className="overview__counter">{user ? user.followers : 0}</span>
         </li>
         <li className="overview__item">
-          <span className="overview__counter">{user ? user.following : 0}</span>
           <Link to="/following">
             <p className="overview__text">Following</p>
           </Link>
+          <span className="overview__counter">{user ? user.following : 0}</span>
         </li>
       </ul>
     </section>

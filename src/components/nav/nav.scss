@@ -108,6 +108,42 @@
   &__icon-close {
     display: none;
   }
+
+  &__usermenu {
+    position: absolute;
+    background-color: #0f0f0f;
+    top: 54px;
+    padding: 0 0.8rem;
+    border-radius: 10px;
+    z-index: 9999;
+    right: 150px;
+    transform: scaleX(0);
+    transition: 0.3s ease-in-out all;
+    transform-origin: left right;
+
+    &.show--menu {
+      transform: scaleX(1);
+    }
+  }
+
+  &__usermenu-item {
+    padding: 0.6rem 0;
+  }
+
+  &__usermenu-icon {
+    margin-right: 0.5rem;
+  }
+
+  &__usermenu-text {
+    font-size: 0.9rem;
+    color: $white;
+    transition: 0.2s ease-in-out color;
+
+    &:hover {
+      color: $lighter_gray;
+      cursor: pointer;
+    }
+  }
 }
 
 @media only screen and (max-width: 1000px) {

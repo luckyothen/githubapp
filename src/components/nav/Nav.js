@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -10,6 +10,7 @@ import {
   getStarredRepoCount,
 } from "../../redux/actions/github-action";
 import { uiActions } from "../../redux/reducers/ui-reducers";
+import { githubActions } from "../../redux/reducers/github-reducer";
 import defaultImage from "../../assets/images/default.png";
 import "./nav.scss";
 
@@ -17,6 +18,8 @@ export default function Nav() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.gitHubReducer.user);
   const isShowMenu = useSelector((state) => state.uiReducer.isShowMenu);
+  const isShowUserMenu = useSelector((state) => state.uiReducer.isShowUserMenu);
+  const searchRef = useRef();
 
   const searchHandler = (e) => {
     if (e.keyCode === 13) {
@@ -32,12 +35,53 @@ export default function Nav() {
 
   const menuHandler = () => {
     dispatch(uiActions.closeShowMenu());
-    console.log(isShowMenu);
+    dispatch(uiActions.forceCloseUserShowMenu());
   };
 
   const menuForceCloseHandler = () => {
     dispatch(uiActions.forceCloseShowMenu());
   };
+
+  const userMenuHandler = () => {
+    dispatch(uiActions.closeShowUserMenu());
+  };
+
+  const clearAllHandler = () => {
+    dispatch(githubActions.clearAll());
+    dispatch(uiActions.forceCloseUserShowMenu());
+    searchRef.current.value = "";
+  };
+
+  let userLoggedInMenu = null;
+
+  if (user) {
+    userLoggedInMenu = (
+      <>
+        <li className="nav__usermenu-item ">
+          <i className="fas fa-user nav__usermenu-icon"></i>
+          <Link
+            className="nav__item"
+            to={{ pathname: user.html_url }}
+            target="_blank"
+          >
+            <span className="nav__usermenu-text">User Account</span>
+          </Link>
+        </li>
+        <li className="nav__usermenu-item">
+          <i class="fas fa-code-branch nav__usermenu-icon"></i>
+          <Link
+            className="nav__item"
+            to={{
+              pathname: `https://github.com/${user.login}?tab=repositories`,
+            }}
+            target="_blank"
+          >
+            <span className="nav__usermenu-text">Repository</span>
+          </Link>
+        </li>
+      </>
+    );
+  }
 
   return (
     <nav className="nav">
@@ -72,6 +116,7 @@ export default function Nav() {
                 className="nav__search"
                 placeholder="Search"
                 onKeyDown={(e) => searchHandler(e)}
+                ref={searchRef}
               />
             </div>
 
@@ -98,13 +143,32 @@ export default function Nav() {
           </div>
         </div>
         <div className="nav__notification-profile">
-          <i className="fas fa-bell nav__icon-notification"></i>
           <img
             srcSet={user ? user.avatar_url : defaultImage}
             alt="Profile"
             className="nav__profile-pic"
           />
-          <i className="fas fa-caret-down nav__icon-caret"></i>
+          <i
+            className={
+              isShowUserMenu
+                ? "fas fa-caret-up nav__icon-caret"
+                : "fas fa-caret-down nav__icon-caret"
+            }
+            onClick={userMenuHandler}
+          ></i>
+          <ul
+            className={
+              isShowUserMenu ? "nav__usermenu show--menu" : "nav__usermenu"
+            }
+          >
+            {userLoggedInMenu}
+            <li className="nav__usermenu-item">
+              <i class="fas fa-eraser nav__usermenu-icon"></i>
+              <span className="nav__usermenu-text" onClick={clearAllHandler}>
+                Clear Search
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

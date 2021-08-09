@@ -1,37 +1,35 @@
 @import "../../assets/scss/index.scss";
 
 .overview {
-  color        : $lighter_gray;
-  margin-top   : 3rem;
+  color: $lighter_gray;
+  margin-top: 3rem;
   margin-bottom: 3rem;
-  overflow     : hidden;
+  overflow: hidden;
 
   &__links {
-    display        : flex;
-    align-items    : center;
+    display: flex;
+    align-items: center;
     justify-content: space-around;
   }
 
   &__text {
-    font-size : 0.9rem;
-    color     : $lighter_gray;
+    font-size: 0.9rem;
+    color: $lighter_gray;
     transition: 0.3s ease-in-out all;
-
   }
 
   &__item:not(:first-of-type) &__text {
     &:hover {
-      color : $white !important;
+      color: $white !important;
       cursor: pointer;
     }
   }
 
-
   &__item {
-    padding        : 1rem;
-    display        : flex;
+    padding: 1rem;
+    display: flex;
     justify-content: flex-start;
-    align-items    : center;
+    align-items: center;
   }
 
   &__item:first-child {
@@ -39,27 +37,27 @@
   }
 
   &__counter {
-    display         : inline-block;
-    font-size       : 0.6rem;
+    display: inline-block;
+    font-size: 0.6rem;
     background-color: $green;
-    padding         : 2px 6px;
-    color           : $white;
-    border-radius   : 5px;
-    align-self      : center;
-    margin-right    : .5rem;
+    padding: 2px 6px;
+    color: $white;
+    border-radius: 5px;
+    align-self: center;
+    margin-left: 0.5rem;
   }
 
   &__text:not(:first-child) {
     transition: 0.3s ease-in-out all;
 
     &:hover {
-      color : $white;
+      color: $white;
       cursor: pointer;
     }
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .overview {
     &__links {
       display: inline-block;
