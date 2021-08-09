@@ -1,32 +1,37 @@
 @import "../../assets/scss/index.scss";
 
 .overview {
-  color: $lighter_gray;
-  margin-top: 3rem;
+  color        : $lighter_gray;
+  margin-top   : 3rem;
   margin-bottom: 3rem;
-  overflow: hidden;
+  overflow     : hidden;
 
   &__links {
-    display: flex;
-    align-items: center;
+    display        : flex;
+    align-items    : center;
     justify-content: space-around;
   }
 
   &__text {
-    font-size: 0.9rem;
-    color: $lighter_gray;
+    font-size : 0.9rem;
+    color     : $lighter_gray;
     transition: 0.3s ease-in-out all;
 
-    &:hover:not(:first-child) {
-      color: $white;
+  }
+
+  &__item:not(:first-of-type) &__text {
+    &:hover {
+      color : $white !important;
       cursor: pointer;
     }
   }
 
+
   &__item {
-    position: relative;
-    z-index: 2;
-    padding: 1rem;
+    padding        : 1rem;
+    display        : flex;
+    justify-content: flex-start;
+    align-items    : center;
   }
 
   &__item:first-child {
@@ -34,25 +39,21 @@
   }
 
   &__counter {
-    display: inline-block;
-    font-size: 0.6rem;
+    display         : inline-block;
+    font-size       : 0.6rem;
     background-color: $green;
-
-    color: $white;
-    position: absolute;
-    top: 3px;
-    right: -8px;
-    z-index: 3;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 5px;
+    padding         : 2px 6px;
+    color           : $white;
+    border-radius   : 5px;
+    align-self      : center;
+    margin-right    : .5rem;
   }
 
   &__text:not(:first-child) {
     transition: 0.3s ease-in-out all;
 
     &:hover {
-      color: $white;
+      color : $white;
       cursor: pointer;
     }
   }
@@ -63,24 +64,9 @@
     &__links {
       display: inline-block;
     }
+  }
 
-    &__item {
-      padding-left: 0;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-    }
-
-    &__counter {
-      display: inline-block;
-      position: absolute;
-      z-index: 4;
-      left: 65px;
-      top: 15px;
-    }
-
-    &__item:nth-of-type(2) &__counter {
-      position: absolute !important;
-      left: 3px !important;
-    }
+  &__item {
+    padding: 1rem 0 !important;
   }
 }
