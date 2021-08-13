@@ -1,0 +1,111 @@
+.sidebar {
+    &__search-links {
+        display        : flex;
+        justify-content: flex-start;
+        align-items    : center;
+        gap            : 1rem;
+    }
+
+    &__search {
+        display         : block;
+        padding         : 0.3rem 0.5rem;
+        width           : 100%;
+        border-radius   : 5px;
+        background-color: $gray;
+        outline         : none;
+        border          : 1px solid $lighter_gray;
+        color           : $lighter_gray;
+    }
+
+    &__links {
+        display: flex;
+        gap    : 1.7rem;
+    }
+
+    &__item {
+        font-size : 0.9rem !important;
+        transition: 0.3s ease-in-out all;
+        color     : $lighter_gray;
+
+        &:hover {
+            cursor: pointer;
+            color : $white;
+        }
+    }
+
+    &__icon-git {
+        color       : $white;
+        font-size   : 2rem;
+        transition  : all ease-in 0.3s;
+        margin-right: 0.5rem;
+
+        &:hover {
+            color : $light_gray;
+            cursor: pointer;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .sidebar {
+        &__links {
+            position  : absolute;
+            top       : 0;
+            left      : -3000px;
+            right     : 0;
+            width     : 100%;
+            min-height: 100%;
+
+            transition      : ease-in-out all 300ms;
+            background-color: $dark;
+            display         : flex;
+            flex-direction  : column;
+            justify-content : flex-start;
+            align-items     : center;
+            z-index         : 9999;
+
+            &.links--show {
+                left: 0 !important;
+            }
+        }
+
+        // &__links--show &__search-links {
+        //     left: 0 !important;
+        // }
+
+        &__wrapper {
+            width: 90%;
+
+            margin-top: 60%;
+            position  : sticky;
+        }
+
+        &__icon-close {
+            position   : absolute;
+            top        : 50px;
+            left       : 30px;
+            display    : block;
+            color      : $lighter_gray;
+            font-size  : 1.4rem;
+            font-weight: bolder;
+
+            &:hover {
+                color : $white;
+                cursor: pointer;
+            }
+        }
+
+        &__icon-git {
+            color       : $white;
+            font-size   : 2rem;
+            transition  : all ease-in 0.3s;
+            margin-right: 0.5rem;
+
+            &:hover {
+                color : $light_gray;
+                cursor: pointer;
+            }
+        }
+    }
+}

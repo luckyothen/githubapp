@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../redux/reducers/ui-reducers";
 import { githubActions } from "../../redux/reducers/github-reducer";
+import "./topmenu.scss";
 
 export default function Topmenu() {
 
