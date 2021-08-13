@@ -46,47 +46,6 @@ export default function Nav() {
     dispatch(uiActions.closeShowUserMenu());
   };
 
-  const clearAllHandler = () => {
-    dispatch(githubActions.clearAll());
-    dispatch(uiActions.forceCloseUserShowMenu());
-    searchRef.current.value = "";
-  };
-
-  const forceCloseUserShowMenuHandler = () => {
-    dispatch(uiActions.forceCloseUserShowMenu());
-  }
-
-  let userLoggedInMenu = null;
-
-  if (user) {
-    userLoggedInMenu = (
-      <>
-        <li className="nav__usermenu-item ">
-          <i className="fas fa-user nav__usermenu-icon"></i>
-          <Link
-            className="nav__item"
-            to={{ pathname: user.html_url }}
-            target="_blank"
-          >
-            <span className="nav__usermenu-text" onClick={forceCloseUserShowMenuHandler}>User Account</span>
-          </Link>
-        </li>
-        <li className="nav__usermenu-item">
-          <i class="fas fa-code-branch nav__usermenu-icon"></i>
-          <Link
-            className="nav__item"
-            to={{
-              pathname: `https://github.com/${user.login}?tab=repositories`,
-            }}
-            target="_blank"
-          >
-            <span className="nav__usermenu-text" onClick={forceCloseUserShowMenuHandler}>Repository</span>
-          </Link>
-        </li>
-      </>
-    );
-  }
-
   return (
     <nav className="nav">
       <div className="nav__wrapper container">
@@ -160,19 +119,7 @@ export default function Nav() {
             }
             onClick={userMenuHandler}
           ></i>
-          <ul
-            className={
-              isShowUserMenu ? "nav__usermenu show--menu" : "nav__usermenu"
-            }
-          >
-            {userLoggedInMenu}
-            <li className="nav__usermenu-item">
-              <i class="fas fa-eraser nav__usermenu-icon"></i>
-              <span className="nav__usermenu-text" onClick={clearAllHandler}>
-                Clear Search
-              </span>
-            </li>
-          </ul>
+
         </div>
       </div>
     </nav>
