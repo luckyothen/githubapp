@@ -52,6 +52,10 @@ export default function Nav() {
     searchRef.current.value = "";
   };
 
+  const forceCloseUserShowMenuHandler = () => {
+    dispatch(uiActions.forceCloseUserShowMenu());
+  }
+
   let userLoggedInMenu = null;
 
   if (user) {
@@ -64,7 +68,7 @@ export default function Nav() {
             to={{ pathname: user.html_url }}
             target="_blank"
           >
-            <span className="nav__usermenu-text">User Account</span>
+            <span className="nav__usermenu-text" onClick={forceCloseUserShowMenuHandler}>User Account</span>
           </Link>
         </li>
         <li className="nav__usermenu-item">
@@ -76,7 +80,7 @@ export default function Nav() {
             }}
             target="_blank"
           >
-            <span className="nav__usermenu-text">Repository</span>
+            <span className="nav__usermenu-text" onClick={forceCloseUserShowMenuHandler}>Repository</span>
           </Link>
         </li>
       </>
