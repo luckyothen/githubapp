@@ -8,12 +8,15 @@ import StarredRepo from "../../components/starredrepo/StarredRepo";
 import Followers from "../../components/followers/Followers";
 import Following from "../../components/following/Following";
 import TopMenu from "../../components/topmenu/TopMenu";
+import SideBar from "../../components/sidebar/SideBar";
+
 
 function Dashboard() {
   return (
     <div className={cssClass.dashboard}>
       <BrowserRouter>
         <Nav />
+        <SideBar />
         <TopMenu />
         <Header />
         <Overview />

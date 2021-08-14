@@ -10,7 +10,6 @@ export default function Topmenu() {
     const user = useSelector((state) => state.gitHubReducer.user);
     const isShowUserMenu = useSelector((state) => state.uiReducer.isShowUserMenu);
     const dispatch = useDispatch();
-    const searchRef = useRef();
     let userLoggedInMenu = null;
 
     const forceCloseUserShowMenuHandler = () => {
@@ -20,7 +19,6 @@ export default function Topmenu() {
     const clearAllHandler = () => {
         dispatch(githubActions.clearAll());
         dispatch(uiActions.forceCloseUserShowMenu());
-        searchRef.current.value = "";
     };
 
     if (user) {

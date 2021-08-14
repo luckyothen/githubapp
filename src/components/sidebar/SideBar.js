@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../redux/reducers/ui-reducers";
@@ -10,34 +10,45 @@ import {
     getFollowing,
     getStarredRepoCount,
 } from "../../redux/actions/github-action";
+import "./sidebar.scss"
 
 export default function SideBar() {
 
     const dispatch = useDispatch();
+    const isShowSideBar = useSelector((state) => state.uiReducer.isShowSideBar);
+    const isShowUserMenu = useSelector((state) => state.uiReducer.isShowUserMenu);
+    const searchValue = useRef();
 
-    const menuForceCloseHandler = () => {
-        dispatch(uiActions.forceCloseShowMenu());
+    const sidebarForceCloseHandler = () => {
+        dispatch(uiActions.forceCloseShowSideBar());
+        dispatch(uiActions.forceCloseUserShowMenu());
+        searchValue.current.value = "";
     };
 
     const searchHandler = (e) => {
         if (e.keyCode === 13) {
+            console.log('testing sidebar');
             dispatch(getUser(e.target.value));
             dispatch(getRepositories(e.target.value));
             dispatch(getStarred(e.target.value));
             dispatch(getFollowers(e.target.value));
             dispatch(getFollowing(e.target.value));
             dispatch(getStarredRepoCount(e.target.value));
-            dispatch(uiActions.forceCloseShowMenu());
+            dispatch(uiActions.forceCloseShowSideBar());
+            dispatch(uiActions.forceCloseUserShowMenu());
+            searchValue.current.value = "";
+
+            console.log(isShowUserMenu)
         }
     };
 
     return (
-        <div className="sidebar">
+        <div className={isShowSideBar ? "sidebar show--sidebar" : "sidebar"} >
             <i
                 className="fas fa-times sidebar__icon-close"
-                onClick={menuForceCloseHandler}
+                onClick={sidebarForceCloseHandler}
             ></i>
-            <div className="sidebar__wrapper">
+            <div className="sidebar__wrapper container">
                 <Link
                     className="sidebar__item"
                     to={{ pathname: "https://github.com/" }}
@@ -51,11 +62,11 @@ export default function SideBar() {
                     id="search"
                     className="sidebar__search"
                     placeholder="Search"
+                    ref={searchValue}
                     onKeyDown={(e) => searchHandler(e)}
 
                 />
             </div>
-
             <ul className="sidebar__links">
                 <li>
                     <Link
@@ -76,6 +87,7 @@ export default function SideBar() {
                     </Link>
                 </li>
             </ul>
-        </div>
+
+        </div >
     )
 }

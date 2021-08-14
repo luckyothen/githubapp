@@ -17,7 +17,7 @@ import "./nav.scss";
 export default function Nav() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.gitHubReducer.user);
-  const isShowMenu = useSelector((state) => state.uiReducer.isShowMenu);
+  const isShowSideBar = useSelector((state) => state.uiReducer.isShowSideBar);
   const isShowUserMenu = useSelector((state) => state.uiReducer.isShowUserMenu);
   const searchRef = useRef();
 
@@ -29,17 +29,17 @@ export default function Nav() {
       dispatch(getFollowers(e.target.value));
       dispatch(getFollowing(e.target.value));
       dispatch(getStarredRepoCount(e.target.value));
-      dispatch(uiActions.forceCloseShowMenu());
+      dispatch(uiActions.forceCloseShowSideBar());
     }
   };
 
   const menuHandler = () => {
-    dispatch(uiActions.closeShowMenu());
-    dispatch(uiActions.forceCloseUserShowMenu());
+    dispatch(uiActions.closeShowSideBar());
+    dispatch(uiActions.closeShowUserMenu());
   };
 
   const menuForceCloseHandler = () => {
-    dispatch(uiActions.forceCloseShowMenu());
+    dispatch(uiActions.forceCloseShowSideBar());
   };
 
   const userMenuHandler = () => {
@@ -47,7 +47,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className="nav">
+    <nav className={isShowSideBar ? "nav hideshow--nav" : "nav"}>
       <div className="nav__wrapper container">
         <div className="nav__menu" onClick={menuHandler}>
           <div className="nav__bar"></div>
@@ -55,9 +55,7 @@ export default function Nav() {
           <div className="nav__bar"></div>
         </div>
         <div
-          className={
-            isShowMenu ? "nav__search-links--show" : "nav__search-layer"
-          }
+          className="nav__search-layer"
         >
           <div className="nav__search-links">
             <i
