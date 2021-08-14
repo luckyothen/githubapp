@@ -1,4 +1,5 @@
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import React, { useRef } from "react";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import cssClass from "./dashboard.module.scss";
 import Nav from "../../components/nav/Nav";
 import Header from "../../components/header/Header";
@@ -10,7 +11,6 @@ import Following from "../../components/following/Following";
 import TopMenu from "../../components/topmenu/TopMenu";
 import SideBar from "../../components/sidebar/SideBar";
 
-
 function Dashboard() {
   return (
     <div className={cssClass.dashboard}>
@@ -21,11 +21,11 @@ function Dashboard() {
         <Header />
         <Overview />
         <Switch>
-          <Route exact path='/' component={UserRepo} />
-          <Route exact path='/my-repo' component={UserRepo} />
-          <Route exact path='/starred-repo' component={StarredRepo} />
-          <Route exact path='/followers' component={Followers} />
-          <Route exact path='/following' component={Following} />
+          <Route exact path="/" component={UserRepo} />
+          <Route exact path="/my-repo" component={UserRepo} />
+          <Route exact path="/starred-repo" component={StarredRepo} />
+          <Route exact path="/followers" component={Followers} />
+          <Route exact path="/following" component={Following} />
         </Switch>
       </BrowserRouter>
     </div>

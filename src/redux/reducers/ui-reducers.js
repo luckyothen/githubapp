@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 let uiSlice = createSlice({
   name: "ui",
-  initialState: { isShowSideBar: false, isShowUserMenu: false, searchValue: "" },
+  initialState: {
+    isShowSideBar: false,
+    isShowUserMenu: false,
+    searchValue: "",
+  },
   reducers: {
     closeShowSideBar(state, action) {
       state.isShowSideBar = !state.isShowSideBar;

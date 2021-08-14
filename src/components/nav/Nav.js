@@ -10,7 +10,6 @@ import {
   getStarredRepoCount,
 } from "../../redux/actions/github-action";
 import { uiActions } from "../../redux/reducers/ui-reducers";
-import { githubActions } from "../../redux/reducers/github-reducer";
 import defaultImage from "../../assets/images/default.png";
 import "./nav.scss";
 
@@ -54,9 +53,7 @@ export default function Nav() {
           <div className="nav__bar"></div>
           <div className="nav__bar"></div>
         </div>
-        <div
-          className="nav__search-layer"
-        >
+        <div className="nav__search-layer">
           <div className="nav__search-links">
             <i
               className="fas fa-times nav__icon-close"
@@ -117,7 +114,6 @@ export default function Nav() {
             }
             onClick={userMenuHandler}
           ></i>
-
         </div>
       </div>
     </nav>
